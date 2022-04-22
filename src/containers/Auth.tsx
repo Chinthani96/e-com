@@ -37,20 +37,6 @@ const Auth = () => {
 
     const [valid,setValid] = useState(true)
 
-    const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-        switch(event.target.name){
-            case "username" :
-                setName(event.target.value);
-            case "email" :
-                setEmail(event.target.value);   
-            case "password" :
-                setPassword(event.target.value); 
-        }
-
-        console.log(event.target.value);
-        console.log(name);
-    }
-
     const loginHandle = () => {
         const username = "test";
         const pwd = "test";
