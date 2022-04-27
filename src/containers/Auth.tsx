@@ -37,7 +37,8 @@ const Auth = () => {
 
     const [valid,setValid] = useState(true)
 
-    const loginHandle = () => {
+    const loginHandle = (event:any) => {
+        event.preventDefault();
         const username = "test";
         const pwd = "test";
         
@@ -52,7 +53,7 @@ const Auth = () => {
 
     return(
         <Container className={classes.paper} maxWidth="sm">
-            {!valid? <Alert severity="error">This is an error alert — check it out!</Alert> : ""}
+            {!valid? <Alert severity="error">Incorrect username or password!</Alert> : ""}
             <Typography className={classes.typo} variant="h5" component="h6" >
                 {   isSignedUp? 
                         "LOGIN" : "SIGNUP" 
