@@ -37,19 +37,20 @@ const Auth = () => {
 
     const [valid,setValid] = useState(true)
 
-    const loginHandle = (event:any) => {
-        event.preventDefault();
+    const onAuthSubmit = (event:React.FormEvent) => {
+        // event.preventDefault();
+
+        if(isSignedUp){
         const username = "test";
         const pwd = "test";
         
         (name===username && password===pwd)? history.push(PRODUCTS) : setValid(false);
+        }
+        else{
+            history.push(PRODUCTS);
+        }
     
     }
-    
-    const signUpHandle = () => {
-        history.push(PRODUCTS);
-    }
-
 
     return(
         <Container className={classes.paper} maxWidth="sm">
@@ -59,7 +60,7 @@ const Auth = () => {
                         "LOGIN" : "SIGNUP" 
                 }
             </Typography>
-            <form className={classes.form}>
+            <form className={classes.form} onSubmit={onAuthSubmit}>
                 <TextField 
                     margin="normal" 
                     className={classes.txtInput} 
@@ -97,30 +98,17 @@ const Auth = () => {
                     autoFocus
                     onChange = {(event) => {setPassword(event.target.value)}}
                     />
-                {isSignedUp ? 
-                <>
+                
                 <Button 
                     variant="contained" 
                     className={classes.button} 
                     type="submit" 
                     fullWidth 
-                    color="secondary" 
-                    onClick={loginHandle}
+                    color="secondary"
                     >
-                        Login
+                       {isSignedUp ?  "Login" : "Sign Up"}
                 </Button> 
                 <Typography>Forgot password?</Typography>
-                </>
-                :
-                <Button 
-                    variant="contained" 
-                    className={classes.button} 
-                    type="button" 
-                    fullWidth 
-                    color="secondary" 
-                    onClick={signUpHandle}
-                >Sign up</Button>  
-                }
             </form>
         </Container>
     )
