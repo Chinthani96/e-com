@@ -1,6 +1,4 @@
-import { ProductType } from "./AllProducts/utils/types";
-
-export const dummyData: Array<ProductType> = [
+export const dummyData: Array<object> = [
     {
         "id": 1,
         "name": 'Takamine gd 11',
