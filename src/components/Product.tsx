@@ -1,10 +1,10 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React from 'react';
 
 const useStyles = makeStyles((theme:Theme) => ({
   card :{
-    margin:"2px"
+    width:"230px",
+    marginTop:"10px"
   }
 }))
 

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Container, Grid } from '@mui/material';
 import Product from '../../components/Product';
-import { dummyData } from '../testData';
 import { getAllProducts } from '../../api/allProductsAPI';
 
 interface Product {
@@ -20,20 +19,34 @@ const AllProducts = () => {
             setData(response.data);
         })
     },[])
+
     return(
-        <Grid container spacing={2}>
-            {data.map((data) => {
-                return(
-                    <Grid 
-                        item 
-                        xs={3}
-                        key={data.id}
-                    >
-                     <Product name={data.name} image={"../../public/assets/guitar.jpg"} description={data.descriptions} />   
-                    </Grid>
-                )
-            })}
-        </Grid>
+            <Grid 
+                container 
+                spacing={2} 
+                columnSpacing={{ xs: 1, sm: 1, md: 1 }}
+            >
+                {data.map((data) => {
+                    return(
+                        <Grid 
+                            item 
+                            xs={12}
+                            sm={2}
+                            md={3}
+                            xl={3}
+                            key={data.id}
+                            display="flex"
+                            justifyContent="center"
+                        >
+                            <Product 
+                                name={data.name} 
+                                image={"../../public/assets/guitar.jpg"} 
+                                description={data.descriptions} 
+                            />   
+                        </Grid>
+                    )
+                })}
+            </Grid>
     )
     
 }
