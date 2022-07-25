@@ -2,16 +2,14 @@ import { useEffect, useState } from 'react';
 import { Container, Grid } from '@mui/material';
 import Product from '../../components/Product';
 import { getAllProducts } from '../../api/allProductsAPI';
-
-interface Product {
-    id: number;
-    name: string;
-    descriptions: string;
-    quantityOnHand: number;
-}
+import { useHistory } from 'react-router';
+import { PRODUCT } from '../../shared/routes';
+import { ProductT } from '../../shared/types/product';
 
 const AllProducts = () => {
-    const [data, setData] = useState<Array<Product>>([]);
+    const [data, setData] = useState<Array<ProductT>>([]);
+    const history = useHistory();
+
     useEffect(() => {
         getAllProducts()
         .then((response) => {
@@ -19,6 +17,16 @@ const AllProducts = () => {
             setData(response.data);
         })
     },[])
+
+    const productView = (product: ProductT) => {
+        console.log(product);
+        history.push({
+            pathname: PRODUCT,
+            search: `?id=${product.id}`,
+            state: {detail : product }
+        })
+        console.log(history);
+    }
 
     return(
             <Grid 
@@ -39,9 +47,8 @@ const AllProducts = () => {
                             justifyContent="center"
                         >
                             <Product 
-                                name={data.name} 
-                                image={"../../public/assets/guitar.jpg"} 
-                                description={data.descriptions} 
+                                product={data}
+                                productView={productView}
                             />   
                         </Grid>
                     )
