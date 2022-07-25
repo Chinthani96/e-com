@@ -3,5 +3,6 @@ export interface ProductT {
     name: string;
     image: string;
     descriptions: string;
+    price: number;
     quantityOnHand: number;
 }
