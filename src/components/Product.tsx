@@ -57,7 +57,7 @@ const Product = ({product, productView}: Props) => {
                   color="#7F5279"
                 >
                     
-                    $200
+                    ${product.price}
                 </Typography>
               </div>
           </CardContent>
